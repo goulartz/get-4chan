@@ -1,6 +1,7 @@
 import requests
 import argparse
 import os
+from progress.bar import Bar
 from bs4 import BeautifulSoup
 
 parser = argparse.ArgumentParser(add_help=False)
@@ -22,11 +23,15 @@ except OSError:
 
 ## Download das imagens da thread
 thread = requests.get(args.thread)
+
 bs = BeautifulSoup(thread.text, 'html.parser')
 images = bs.find_all('a', {'class': 'fileThumb', 'href': True})
+bar = Bar('Download', max = len(images), suffix='%(percent)d%%')
 for image in images:
+    bar.next()
     with requests.get("https:" + str(image['href'])) as r:
         split = str(image['href']).split('/')
         with open(args.path + split[4], "wb") as binary_img:
             binary_img.write(r.content)
-            binary_img.close()
+            binary_img.close()         
+bar.finish()      
