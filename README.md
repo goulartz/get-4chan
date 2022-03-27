@@ -5,6 +5,7 @@ Download all files in a thread of 4chan
 
 - BeautifulSoup
 - argparse
+- progress
 
 # python3 get-4chan.py --help
 
