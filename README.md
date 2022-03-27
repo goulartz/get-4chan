@@ -1,6 +1,10 @@
 # get-4chan
 Download all files in a thread of 4chan
 
+# Requirements
+
+- BeautifulSoup
+- argparse
 
 # python3 get-4chan.py --help
 
