@@ -16,10 +16,11 @@ if not args.thread.startswith("https://"):
     args.thread = "https://" + args.thread
 
 #Criar pasta de destino
-try:
-    os.mkdir(args.path)
-except OSError:
-    pass
+if args.path:
+    try:
+        os.mkdir(args.path)
+    except OSError:
+        pass
 
 ## Download das imagens da thread
 thread = requests.get(args.thread)
