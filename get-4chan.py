@@ -24,7 +24,6 @@ if args.path:
 
 ## Download das imagens da thread
 thread = requests.get(args.thread)
-
 bs = BeautifulSoup(thread.text, 'html.parser')
 images = bs.find_all('a', {'class': 'fileThumb', 'href': True})
 bar = Bar('Download', max = len(images), suffix='%(percent)d%%')
