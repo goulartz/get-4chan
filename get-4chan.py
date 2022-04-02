@@ -13,7 +13,13 @@ args = parser.parse_args()
 
 ## Caso não tenha https no começo do parâmetro thread
 if not args.thread.startswith("https://"):
-    args.thread = "https://" + args.thread
+	if args.thread.startswith("http://"):
+		arg.thread.replace("http://", "https://")
+	else:
+		args.thread = "https://" + args.thread
+
+if not args.path.endswith("/"):
+	args.path = args.path + "/"
 
 #Criar pasta de destino
 try:
