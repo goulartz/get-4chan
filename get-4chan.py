@@ -18,10 +18,11 @@ if not args.thread.startswith("https://"):
 	else:
 		args.thread = "https://" + args.thread
 
+## Caso não termine com / no final do parâmetro thread
 if not args.path.endswith("/"):
 	args.path = args.path + "/"
 
-#Criar pasta de destino
+## Criar pasta de destino
 try:
     os.mkdir(args.path)
 except OSError:
